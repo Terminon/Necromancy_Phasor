@@ -1,0 +1,40 @@
+Game Score Determination
+
+return    get_level_score()
+		+ get_town_score() 
+		+ get_mana_score()
+		+ get_gold_score() 
+		+ get_turn_score() 
+		+ get_unit_score();
+------------------------------
+Subvalues:
+
+return (obj_highscore.game_level-1)*500;
+
+return towns*150;
+
+return min(mana,150);
+
+return min(gold,150);
+
+return max(0, (505-obj_highscore.turn*5));
+
+return min(obj_highscore.unit_value,300);
+---------------------------------
+Unit values:
+
+		if (string_pos("militia",army.armytype))        base_value=6;
+		if (string_pos("light_infantry",army.armytype)) base_value=8;
+		if (string_pos("heavy_infantry",army.armytype)) base_value=10;
+		
+		var multiplier=0;
+		if (string_pos("(1)",army.level))        multiplier=1;
+		if (string_pos("(2)",army.level))        multiplier=2;
+		if (string_pos("(3)",army.level))        multiplier=5;
+		if (string_pos("(4)",army.level))        multiplier=10;
+		if (string_pos("(5)",army.level))        multiplier=20;
+
+
+
+
+

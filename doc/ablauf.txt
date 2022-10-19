@@ -1,0 +1,68 @@
+SPIELOBJEKTE
+
+Terrain
+-------
+name Name
+ap_cost Bewegungskosten
+rest_heal Rast-Heilung
+move_dmg Bewegungsschaden
+def_bonus Verteidigungsbonus
+
+
+Armee
+-----
+unit_name Name
+unit_type Typ
+level Erfahrungsstufe (1-Rekrut,2-Scharmützler,3-Veteran,4-Elite,5-Legende)
+att Angriff-% 
+def Verteidigung-%
+ap_max Bewegung-Max
+ap_current Bewegung-Aktuell
+is_structure Unterscheidet Türme von beweglichen Einheiten
+
+
+
+SPIEL-SETUP
+-----------
+Zufällige Ermittlung des Terrains, der Türme und der Städte.
+Strukturen stehen immer auf Grasland.
+
+
+
+SPIELVERLAUF
+------------
+
+Zugbeginn: 
+AP aller beweglichen Einheiten werden aufgefüllt, 
+Mana und Gold aus Stadtbesitz auf Spielerguthaben gutgeschrieben
+
+Spieler-Optionen:
+
+* Einheiten ziehen
+* Einheiten kaufen
+* Magie wirken ( Unermüdlichkeit, Heilung, Feuerball)
+
+
+Gegner zieht:
+
+Skelette haben 1 AP, Terrain-unabhängig
+Ghule haben 2 AP, Terrain-unabhängig
+Todesfeen haben 3 AP, Terrain-unabhängig
+
+Ziele der Gegner:
+Skelette: Spieler-Turm
+Ghule: Spieler-Stadt, dann Spieler Turm
+Todesfeen: Spieler-Armeen, dann Spieler Stadt, dann Spieler Turm
+
+Wasser ist unüberquerbar.
+
+Kampf-Besonderheiten:
+Ghule haben die besondere Fähigkeit, den getroffenen Gegner zusätzlich zu lähmen (AP-Schaden)
+Todesfeen haben die besondere Fähigkeiten, dem getroffenen Gegner Lebenskraft zu rauben ( Max Leben sinkt dauerhaft)
+
+Aufstieg: Eine Armee, die einen Kampf gewinnt, steigt einen Level auf. Wie weit aufgestiegen wird, hängt von der
+besiegten Kreatur ab:
+
+Besiegte Skelette ermöglichen Aufstieg bis max. Level 3 (Veteran)
+Besiegte Ghoule ermöglichen Aufstieg bis max. Level 4 (Elite)
+Besiegte Todesfeen ermöglichen Aufstieg bis max. Level 5 ( Legende )

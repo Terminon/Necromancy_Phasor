@@ -1,0 +1,47 @@
+var army=argument0;
+var challenge_rating=argument1;
+
+if (army.level=="Rekrut (1)") {
+    army.attack+=5;
+    army.maxhp+=2;
+    army.level="Scharmützler (2)";
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"*Levelup*");
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"Angriff +5%");
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"Leben +2");
+    audio_play_sound(snd_town_captured,10,false);
+    exit;
+}
+
+if (army.level=="Scharmützler (2)") {
+    army.defense+=5;
+    army.maxhp+=2;
+    army.level="Veteran (3)";
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"*Levelup*");
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"Verteidigung +5%");
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"Leben +2");
+        
+    
+    audio_play_sound(snd_town_captured,10,false);
+    exit;
+}
+if (challenge_rating<2) exit; // nur durch Besiegen von Ghulen und Todesfeen möglich
+if (army.level=="Veteran (3)") {
+    army.attack+=10;
+    army.maxhp+=5;
+    army.level="Elite (4)";
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"*Levelup*");
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"Angriff +10%");
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"Leben +5");
+    exit;
+}
+if (challenge_rating<3) exit; // // nur durch Besiegen von Todesfeen möglich
+if (army.level=="Elite (4)") {
+    army.defense+=10;
+    army.maxap+=2;
+    army.level="Legende (5)";
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"*Levelup*");
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"Verteidigung +10%");
+    create_floater_at_board_xy(round(army.x/32),round(army.y/32),c_white,"Bewegung +2");
+    audio_play_sound(snd_town_captured,10,false);
+    exit;
+}

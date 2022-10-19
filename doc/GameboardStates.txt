@@ -1,0 +1,34 @@
+GameBoardStates
+----------------
+scr_init_game => { scr_generate_map(); gamestate=scr_player_input; }
+
+scr_player_input => { get_player_input, branch to scr_player_input_move,buy,cast }
+
+scr_player_input_move => { move&combat, branch to scr_player_wins, scr_player_input}
+
+scr_ai_action (Triggered by next turn btn) => { Create Creatures, then goto scr_ai_monster_move }
+
+scr_ai_monster_move (After ai action) => { move/attack with  1 creature, set itself to next state, branch to scr_player_input
+, scr_player_loses }
+
+scr_buy_army ( select army to buy & place it, branches back to scr_player_input)
+
+scr_cast_spell ( select spell & cast it, where spell have their own GameboardState. Branches to scr_cast_spell_refresh_select
+, scr_cast_spell_heal_select, scr_cast_spell_fireball_select, scr_cast_spell_fireball_fly )
+
+scr_state_delay ( this state gets a delay & a next_gamestate, to which to go after delay has expired. Used to space actions.)
+
+scr_player_wins ( ends game, writes score to higscore object, leaves the GameBoard State)
+
+scr_player_loses ( ends game, leaves the Gameboard State)
+
+
+
+
+
+Delay GameboardState is used for spacing between states:
+--------------------------------------------------------
+// Example:
+// 0.5 second delay
+obj_controller.previous_gamestate=scr_player_input_move; // Better to be named next_gamestate :-)
+obj_controller.gamestate=scr_state_delay;

@@ -1,0 +1,7 @@
+### LOAD HIGHSCORES ###
+http://www.zauberturm.de/games/necromancy/get_highscore.php
+
+### SAVE HIGHSCORE ###
+http://www.zauberturm.de/games/necromancy/upload_score1.php?entry_name="+scr_urlencode(entry_name)+"&entry_score="+scr_urlencode(entry_score)+"&entry_date="+entry_date+"&level="+string(obj_highscore.game_level)+"&checksum=11111";
+
+** Note: entry_date has to be in format DD.MM.YYYY
